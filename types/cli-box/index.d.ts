@@ -38,18 +38,25 @@ interface Text {
     vAlign?: 'top' | 'center' | 'bottom';
 }
 
+interface Line {
+    text: string;
+    offset?: {
+        x?: number;
+        y?: number;
+    };
+    escapeCodes: Array<{
+        index: number;
+        code: string;
+    }>;
+}
+
 interface Box {
     stringify(): string;
     settings: {
         width: number;
         height: number;
         marks: Marks;
-        lines: Array<{
-            text: string;
-            offset: {
-                y: number;
-            }
-        }>
+        lines: Line[];
     };
     options: {
         width: number;
